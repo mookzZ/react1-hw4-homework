@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class Form extends React.Component {
+    handleSubmitClick = () => {
+        const name = this._name.value
+        const phone = this._phone.value
+        const address = this._address.value
+        alert(`
+            ФИО: ${name}
+            Телефон: ${phone}
+            Адрес: ${address}`)
+    }
+
+    render() {
+        return (
+            <div className={'wrapper'}>
+                <h1>Form</h1>
+                <div className={'inputs'}>
+                    <input type="text" ref={input => this._name = input} placeholder={'Your full name...'}/>
+                    <input type="text" ref={input => this._phone = input} placeholder={'Your phone...'}/>
+                    <input type="text" ref={input => this._address = input} placeholder={'Your address...'}/>
+                </div>
+                <button onClick={this.handleSubmitClick}>Submit Data</button>
+            </div>
+        )
+    }
 }
-
-export default App;
